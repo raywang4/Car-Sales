@@ -12,8 +12,9 @@ carsale = read.csv("Car_sales.csv")
 
 ## Introduction
 
-In this project we focuses on the carsale dataset that includes data for different car models. Our aim is to determine what customers value the most when buying cars and how are the original price and the second-hand price influenced by car's properties. Then consumer advice will be given based on the observations for people who want to sell their cars to help them make the most out of their cars. 
+Cars have become an important component of modern life, and it is one of the most common transportation. Many websites and blogs provide car advice to people who are interested, and these advice covers nearly all aspects of car. However, despite the large amount and wide coverage of these advice, there are no current work on data-based customer advise, and most of the suggestions available online are only based on subjective opinions rather than strict data analysis. Therefore, we decided to contribute this data science project.
 
+In this project we focuses on the carsale dataset that includes data for different car models. Our aim is to determine what customers value the most when buying cars and how are the original price and the second-hand price influenced by car's properties. Then consumer advice will be given based on the observations for people who want to sell their cars to help them make the most out of their cars. 
 
 ## Data Collection & Data Cleaning
 
@@ -206,3 +207,5 @@ We can deduce from the results that larger cars tend to get more second hand sal
 
 ## Conclusion
 We found that the factors have more influence on the pricing of the cars and have less impact on the second hand price and the sales of the cars. This once again proves that the conditioning of the car is the most important factor when reselling a car. For car owners, we suggest to buy larger cars when only using it for a short term and do not buy cars that have extreme values for the factors not related to car size. All in all, the most important thing to do for owners who want to sell their car is to take good car of their cars.
+
+Due to the lack of sufficient data, our conclusion may not be guaranteed to be correct when a lot of other car models are introduced. In the future, larger datasets can be used to establish a more general correlation and make our conclusion more solid.
