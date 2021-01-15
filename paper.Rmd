@@ -98,48 +98,55 @@ The rest of the factors, width, length, wheelbase, and curb weight, all share a 
 
 ## Factors influencing second hand price
 
-For the second hand price, we cannot use the resale value directly. We need to consider the fact that when the original price is high, the resale value should also be high. Therefore, we need to find a way to remove this influence, and one such way is simply divide the resale value by the original price to get the percentage of the price. This indicates that how many percent of the original value can you still sell the car for after 10 years. After this decision, we can take a look at the graphs:
+For the second hand price, we cannot use the resale value directly. We need to consider the fact that when the original price is high, the resale value should also be high. Therefore, we need to find a way to remove this influence, and one such way is simply divide the resale value by the original price to get the percentage of the price. This indicates that how many percent of the original value can you still sell the car for after 10 years. 
+
+```{r}
+carsale <- carsale %>%
+  mutate(resale_percent = X__year_resale_value / Price_in_thousands)
+```
+
+After this decision, we can take a look at the graphs:
 
 ```{r, echo = FALSE, message = FALSE}
 a<-ggplot(data = carsale) +
-  geom_point(mapping = aes(y = X__year_resale_value / Price_in_thousands, x = Engine_size)) +
-  geom_smooth(mapping = aes(y = X__year_resale_value / Price_in_thousands, x = Engine_size))
+  geom_point(mapping = aes(y = resale_percent, x = Engine_size)) +
+  geom_smooth(mapping = aes(y = resale_percent, x = Engine_size))
 
 b<-ggplot(data = carsale) +
-  geom_point(mapping = aes(y = X__year_resale_value / Price_in_thousands, x = Horsepower)) +
-  geom_smooth(mapping = aes(y = X__year_resale_value / Price_in_thousands, x = Horsepower))
+  geom_point(mapping = aes(y = resale_percent, x = Horsepower)) +
+  geom_smooth(mapping = aes(y = resale_percent, x = Horsepower))
 
 c<-ggplot(data = carsale) +
-  geom_point(mapping = aes(y = X__year_resale_value / Price_in_thousands, x = Wheelbase))+
-  geom_smooth(mapping = aes(y = X__year_resale_value / Price_in_thousands, x = Wheelbase))
+  geom_point(mapping = aes(y = resale_percent, x = Wheelbase))+
+  geom_smooth(mapping = aes(y = resale_percent, x = Wheelbase))
 
 d<-ggplot(data = carsale) +
-  geom_point(mapping = aes(y = X__year_resale_value / Price_in_thousands, x = Width))+
-  geom_smooth(mapping = aes(y = X__year_resale_value / Price_in_thousands, x = Width))
+  geom_point(mapping = aes(y = resale_percent, x = Width))+
+  geom_smooth(mapping = aes(y = resale_percent, x = Width))
 
 e<-ggplot(data = carsale) +
-  geom_point(mapping = aes(y = X__year_resale_value / Price_in_thousands, x = Length))+
-  geom_smooth(mapping = aes(y = X__year_resale_value / Price_in_thousands, x = Length))
+  geom_point(mapping = aes(y = resale_percent, x = Length))+
+  geom_smooth(mapping = aes(y = resale_percent, x = Length))
 
 f<-ggplot(data = carsale) +
-  geom_point(mapping = aes(y = X__year_resale_value / Price_in_thousands, x = Curb_weight))+
-  geom_smooth(mapping = aes(y = X__year_resale_value / Price_in_thousands, x = Curb_weight))
+  geom_point(mapping = aes(y = resale_percent, x = Curb_weight))+
+  geom_smooth(mapping = aes(y = resale_percent, x = Curb_weight))
 
 g<-ggplot(data = carsale) +
-  geom_point(mapping = aes(y = X__year_resale_value / Price_in_thousands, x = Fuel_capacity))+
-  geom_smooth(mapping = aes(y = X__year_resale_value / Price_in_thousands, x = Fuel_capacity))
+  geom_point(mapping = aes(y = resale_percent, x = Fuel_capacity))+
+  geom_smooth(mapping = aes(y = resale_percent, x = Fuel_capacity))
 
 h<-ggplot(data = carsale) +
-  geom_point(mapping = aes(y = X__year_resale_value / Price_in_thousands, x = Fuel_efficiency))+
-  geom_smooth(mapping = aes(y = X__year_resale_value / Price_in_thousands, x = Fuel_efficiency))
+  geom_point(mapping = aes(y = resale_percent, x = Fuel_efficiency))+
+  geom_smooth(mapping = aes(y = resale_percent, x = Fuel_efficiency))
 
 i<-ggplot(data = carsale) +
-  geom_point(mapping = aes(y = X__year_resale_value / Price_in_thousands, x = Power_perf_factor))+
-  geom_smooth(mapping = aes(y = X__year_resale_value / Price_in_thousands, x = Power_perf_factor))
+  geom_point(mapping = aes(y = resale_percent, x = Power_perf_factor))+
+  geom_smooth(mapping = aes(y = resale_percent, x = Power_perf_factor))
 
 j<-ggplot(data = carsale) +
-  geom_point(mapping = aes(y = X__year_resale_value / Price_in_thousands, x = launchTime))+
-  geom_smooth(mapping = aes(y = X__year_resale_value / Price_in_thousands, x = launchTime))
+  geom_point(mapping = aes(y = resale_percent, x = launchTime))+
+  geom_smooth(mapping = aes(y = resale_percent, x = launchTime))
 
 ggarrange(a,b,c,d,e,f,g,h,i,j)
 ```
