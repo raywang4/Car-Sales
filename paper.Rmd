@@ -1,5 +1,6 @@
 ---
 title: "Analysis on car sale data"
+author: "Ray Wang, Henry Huang"
 output: pdf_document
 ---
 
